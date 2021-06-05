@@ -2,42 +2,70 @@
 
 ## usersテーブル
 
-| Column     | Type   | Options     |
-| ---------- | ------ | ----------- |
-| email      | string | null: false |
-| password   | string | null: false |
-| name       | string | null: false |
-| profile    | text   | null: false |
-| occupation | text   | null: false |
-| position   | text   | null: false |
+| Column          | Type   | Options                   |
+| --------------- | ------ | ------------------------- |
+| nickname        | string | null: false               |
+| email           | string | null: false, unique: true |
+| password        | string | null: false               |
+| last_name       | string | null: false               |
+| first_name      | string | null: false               |
+| last_name_kana  | string | null: false               |
+| first_name_kana | string | null: false               |
+| birthday_year   | text   | null: false               |
+| birthday_month  | text   | null: false               |
+| birthday_day    | text   | null: false               |
 
 ### Association
-- has_many :prototypes
-- has_many :comments
+- has_many :items
+- has_many :purchase
 
 
-## prototypesテーブル
+## itemsテーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| title      | string     | null: false                    |
-| catch_copy | text       | null: false                    |
-| concept    | text       | null: false                    |
-| user       | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| image            | text       | null: false                    |
+| item             | text       | null: false                    |
+| text             | text       | null: false                    |
+| category         | text       | null: false, foreign_key: true |
+| condition        | text       | null: false, foreign_key: true |
+| delivery_charge  | text       | null: false                    |
+| shipping_area    | text       | null: false                    |
+| days_to_ship     | text       | null: false                    |
+| price            | text       | null: false                    |
+| user             | references | null: false, foreign_key: true |
+| purchase         | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- has_many :comments
+- has_one    :purchase
 
 
-## commentsテーブル
+## purchaseテーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
-| text      | text       | null: false                    |
 | user      | references | null: false, foreign_key: true |
-| prototype | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
+| address   | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
-- belongs_to :prototype
+- belongs_to  :user
+- belongs_to  :item
+- has_one     :address
+
+
+## addressテーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| postal_code     | integer    | null: false                    |
+| todofuken_name  | string     | null: false                    |
+| city_name       | text       | null: false                    |
+| city_address    | text       | null: false                    |
+| building_name   | text       | null: false                    |
+| phone_number    | integer    | null: false                    |
+| purchase_id     | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to  :purchase
