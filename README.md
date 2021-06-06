@@ -24,7 +24,7 @@
 
 | Column              | Type       | Options                         |
 | ------------------- | ---------- | ------------------------------- |
-| item                | string     | null: false                     |
+| name                | string     | null: false                     |
 | text                | text       | null: false                     |
 | category_id         | integer    | null: false                     |
 | condition_id        | integer    | null: false                     |
@@ -35,8 +35,8 @@
 | user                | references | null: false, foreign_key: true  |
 
 ### Association
-- belongs_to :user
-- has_one    :purchase
+- belongs_to  :user
+- has_one     :purchase
 
 
 ## purchasesテーブル
@@ -49,6 +49,7 @@
 ### Association
 - belongs_to  :user
 - belongs_to  :item
+- has_one     :address
 
 
 ## addressesテーブル
@@ -56,7 +57,7 @@
 | Column            | Type       | Options                         |
 | ----------------- | ---------- | ------------------------------- |
 | postal_code       | string     | null: false                     |
-| shipping_area_id  | string     | null: false                     |
+| shipping_area_id  | integer    | null: false                     |
 | city_name         | string     | null: false                     |
 | city_address      | string     | null: false                     |
 | building_name     | string     |                                 |
