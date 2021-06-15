@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # アソシエーションをここに記述
+  #has_many :items
+  #has_many :purchases
 
   # emailとpasswordが空だと保存できないバリデーションは標準で用意されている。
   validates :nickname, presence: true
