@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # アソシエーションをここに記述
-  # has_many :items
+  has_many :items
   # has_many :purchases
 
   with_options presence: true do
