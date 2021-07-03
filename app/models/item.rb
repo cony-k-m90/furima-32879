@@ -1,20 +1,29 @@
 class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to  :category
+  
   belongs_to  :user
-  has_one_attached :image
+  belongs_to  :category
+  belongs_to  :condition
+  belongs_to  :delivery_charge
+  belongs_to  :shipping_area
+  belongs_to  :days_to_ship
+  has_one_attached :item_image
+  #belongs_to  :has_one_attached
   #has_one     :purchase
 
-  validates :name, presence: true
-  validates :text, presence: true
-  validates :category_id, numericality: { other_than: 0 }
-  validates :condition_id, numericality: { other_than: 0 }
-  validates :delivery_charge_id, numericality: { other_than: 0 }
-  validates :shipping_area_id, numericality: { other_than: 0 }
-  validates :days_to_ship_id, numericality: { other_than: 0 }
-  validates :price, presence: true
-  validates :user, presence: true
-  # バリデーションの記述が終わったら with_options で纏める!!
+  with_options presence: true do
+    validates :name
+    validates :text
+    validates :price
+    validates :user
+  end
+  with_options numericality: { other_than: 0 } do
+    validates :category_id
+    validates :condition_id
+    validates :delivery_charge_id
+    validates :shipping_area_id
+    validates :days_to_ship_id
+  end
 
 end
