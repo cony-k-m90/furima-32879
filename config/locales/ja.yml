@@ -8,3 +8,8 @@ ja:
         last_name_kana: お名前カナ(姓)
         first_name_kana: お名前カナ(名)
         birthday: 生年月日
+
+  # 表示する時刻のフォーマットを設定
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
