@@ -7,8 +7,7 @@ require("@rails/ujs").start()
 // "turbolinks")を削除      JavaScriptファイルの処理が正常に動作しないことを防ぐため使用しない（※本当は削除する）
 require("@rails/activestorage").start()
 require("channels")
-require("../addtaxprice")
-require("../profit")
+require("../pricecontent")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
