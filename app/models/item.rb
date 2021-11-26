@@ -13,10 +13,11 @@ class Item < ApplicationRecord
   #has_one     :purchase
 
   with_options presence: true do
-    validates :name
-    validates :text
+    validates :name, length: { maximum: 40 }
+    validates :text, length: { maximum: 1000 }
     validates :user
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+    validates :item_image
   end
 
   with_options numericality: { other_than: 0 } do
