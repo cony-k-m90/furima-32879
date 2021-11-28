@@ -9,7 +9,6 @@ class Item < ApplicationRecord
   belongs_to  :shipping_area
   belongs_to  :days_to_ship
   has_one_attached :item_image
-  #belongs_to  :has_one_attached
   #has_one     :purchase
 
   with_options presence: true do
@@ -20,7 +19,7 @@ class Item < ApplicationRecord
     validates :item_image
   end
 
-  with_options numericality: { other_than: 0 } do
+  with_options numericality: { other_than: 0, message: "を入力して下さい（---以外の選択肢からお選び下さい）" } do
     validates :category_id
     validates :condition_id
     validates :delivery_charge_id

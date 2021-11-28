@@ -41,27 +41,27 @@ RSpec.describe Item, type: :model do
       it '商品の詳細の「カテゴリー」が未入力の時' do
         @item.category_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 0")
+        expect(@item.errors.full_messages).to include("Category を入力して下さい（---以外の選択肢からお選び下さい）")
       end
       it '商品の詳細の「商品の状態」が未入力の時' do
         @item.condition_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition must be other than 0")
+        expect(@item.errors.full_messages).to include("Condition を入力して下さい（---以外の選択肢からお選び下さい）")
       end
       it '配送についての「配送料の負担」が未入力の時' do
         @item.delivery_charge_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery charge must be other than 0")
+        expect(@item.errors.full_messages).to include("Delivery charge を入力して下さい（---以外の選択肢からお選び下さい）")
       end
       it '配送についての「配送元の地域」が未入力の時' do
         @item.shipping_area_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping area must be other than 0")
+        expect(@item.errors.full_messages).to include("Shipping area を入力して下さい（---以外の選択肢からお選び下さい）")
       end
       it '配送についての「配送までの日数」が未入力の時' do
-        @item.shipping_area_id = 0
+        @item.days_to_ship_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping area must be other than 0")
+        expect(@item.errors.full_messages).to include("Days to ship を入力して下さい（---以外の選択肢からお選び下さい）")
       end
       it '販売価格の「価格」が未入力の時' do
         @item.price = ''
