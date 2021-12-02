@@ -13,8 +13,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name, length: { maximum: 40 }
     validates :text, length: { maximum: 1000 }
-    validates :user
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
     validates :item_image
   end
 
