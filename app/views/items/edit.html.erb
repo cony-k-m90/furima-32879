@@ -137,12 +137,10 @@ app/assets/stylesheets/items/new.css %>
     </div>
     <%# /注意書き %>
     <%# 下部ボタン %>
-    <% if user_signed_in? && current_user.id == @item.user_id %>
-      <div class="sell-btn-contents">
-        <%= f.submit "変更する" ,class:"sell-btn" %>
-        <%=link_to 'もどる', item_path(@item.id), method: :get, class:"back-btn" %>
-      </div>
-    <% end %>
+    <div class="sell-btn-contents">
+      <%= f.submit "変更する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', item_path(@item.id), method: :get, class:"back-btn" %>
+    </div>
     <%# /下部ボタン %>
   </div>
   <% end %>
