@@ -7,8 +7,8 @@ class Item < ApplicationRecord
   belongs_to  :delivery_charge
   belongs_to  :shipping_area
   belongs_to  :days_to_ship
+  has_one     :order
   has_one_attached :item_image
-  # has_one     :purchase
 
   with_options presence: true do
     validates :name, length: { maximum: 40 }
