@@ -3,10 +3,11 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
     create_table :addresses do |t|
       t.string :postal_code,    default: "",  null: false
       t.integer :shipping_area_id,            null: false
-      t.string :city,           default: ""
-      t.string :house_number,   default: ""
+      t.string :city,           default: "",  null: false
+      t.string :house_number,   default: "",  null: false
       t.string :building_name,  default: ""
-      t.references :item,                     null: false,  foreign_key: true
+      t.string :phone_number,   default: "",  null: false
+      t.references :order,                    null: false,  foreign_key: true
       t.timestamps
     end
   end
