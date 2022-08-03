@@ -6,11 +6,13 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @item_order = ItemOrder.new(item_order_params)
-    if @item_order.valid?
+      if @item_order.valid?
         @item_order.save
-        redirect_to action: :index
+        redirect_to root_path
       else
+        #render action: :index #(index.html.erb+orders#create)
         render action: :index
       end
   end
