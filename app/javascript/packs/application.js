@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-// "turbolinks")を削除      JavaScriptファイルの処理が正常に動作しないことを防ぐため使用しない（※本当は削除する）
+// require("turbolinks").start() // JavaScriptファイルの処理が正常に動作しないことを防ぐため使用しない
 require("@rails/activestorage").start()
 require("channels")
 require("../pricecontent")
