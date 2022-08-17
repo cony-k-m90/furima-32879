@@ -1,6 +1,6 @@
 class ItemOrder
   include ActiveModel::Model
-  attr_accessor :postal_code, :shipping_area_id, :city, :house_number, :building_name, :phone_number, :user_id, :item_id, :order_id
+  attr_accessor :postal_code, :shipping_area_id, :city, :house_number, :building_name, :phone_number, :user_id, :item_id, :order_id, :token
 
   # ここに住所のバリデーションを書く
   with_options presence: true do
