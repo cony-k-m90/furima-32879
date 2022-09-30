@@ -1,13 +1,21 @@
 class OrdersController < ApplicationController
-  before_action :move_to_index, only: [:index, :create]
+  before_action :authenticate_user!, only: [:create]
+  before_action :move_to_index, only: [:index]
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
-    @item_order = ItemOrder.new           #フォームオブジェクトに定義したItemOrderクラス
+    if @item.order.present?                   #自身の出品した商品購入ページに遷移しようとするとトップページに遷移する
+      redirect_to root_path
+    else
+      if @item.user == current_user
+        redirect_to root_path
+      else
+        @item_order = ItemOrder.new           #フォームオブジェクトに定義したItemOrderクラス
+      end
+    end
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @item_order = ItemOrder.new(item_order_params)
       if @item_order.valid?
         pay_item
@@ -38,6 +46,10 @@ class OrdersController < ApplicationController
     unless user_signed_in?
       redirect_to root_path
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
 end
