@@ -12,6 +12,13 @@ RSpec.describe ItemOrder, type: :model do
       end
     end
 
+    context '住所情報を正しく入力すると商品の購入ができること' do
+      it 'phone_number が10桁でも商品の購入ができる' do
+        @item_order.phone_number = '0312345678'
+        expect(@item_order).to be_valid
+      end
+    end
+
     context '「クレジットカード情報入力」の項目に不備があると決済（商品購入）ができないこと' do
       it 'priceが空では保存ができないこと' do
         @item_order.price = nil
@@ -93,11 +100,17 @@ RSpec.describe ItemOrder, type: :model do
         @item_order.valid?
         expect(@item_order.errors.full_messages).to include('Phone number is invalid')
       end
-      it 'phone_number が11桁以内であること' do
-        @item_order.phone_number = '0901234567'
+      it 'phone_number が10桁未満では保存ができないこと' do
+        @item_order.phone_number = '090123456'
         @item_order.valid?
         expect(@item_order.errors.full_messages).to include('Phone number is invalid')
       end
+      it 'phone_number が12桁以上では保存ができないこと' do
+        @item_order.phone_number = '090123456789'
+        @item_order.valid?
+        expect(@item_order.errors.full_messages).to include('Phone number is invalid')
+      end
+
     end
   end
 end
