@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   def item_order_params
     # require: バリデーションで指定した値が存在しなければ例外を出す
     params.require(:item_order).permit(:postal_code, :shipping_area_id, :city, :house_number, :building_name, :phone_number).merge(
-      user_id: current_user.id, item_id: params[:item_id], token: params[:token], price: @item.price
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )
   end
 
