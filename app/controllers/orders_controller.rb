@@ -3,12 +3,12 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    if @item.order.present?                   # 自身の出品した商品購入ページに遷移しようとするとトップページに遷移する
+    if @item.order.present?       # 学習メモ：自身の出品した商品購入ページに遷移しようとするとトップページに遷移する
       redirect_to root_path
     elsif @item.user == current_user
       redirect_to root_path
     else
-      @item_order = ItemOrder.new # フォームオブジェクトに定義したItemOrderクラス
+      @item_order = ItemOrder.new # 学習メモ：フォームオブジェクトに定義したItemOrderクラス
     end
   end
 
@@ -26,7 +26,6 @@ class OrdersController < ApplicationController
   private
 
   def item_order_params
-    # require: バリデーションで指定した値が存在しなければ例外を出す
     params.require(:item_order).permit(:postal_code, :shipping_area_id, :city, :house_number, :building_name, :phone_number).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )

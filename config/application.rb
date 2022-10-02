@@ -11,9 +11,9 @@ module Furima32879
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    # 日本語の言語設定、タイムスタンプを日本時間にする
+    # 学習メモ：日本語の言語設定、タイムスタンプを日本時間にする
     config.i18n.default_locale = :ja
-    # タイムゾーンの設定
+    # 学習メモ：タイムゾーンの設定
     config.time_zone = 'Tokyo'
 
     # Settings in config/environments/* take precedence over those specified here.
