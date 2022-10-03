@@ -4,7 +4,7 @@ RSpec.describe ItemOrder, type: :model do
   before do
     @user = FactoryBot.create(:user)
     @item = FactoryBot.create(:item)
-    @item_order = FactoryBot.build(:item_order, user_id: @user.id, item_id: @item.id )
+    @item_order = FactoryBot.build(:item_order, user_id: @user.id, item_id: @item.id)
   end
 
   describe '商品購入フォームから「配送先入力」箇所の保存とpayjpへ決済処理を行う' do
