@@ -63,6 +63,9 @@ gem 'rails-i18n'
 gem 'active_hash'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
-# PAY.JPが提供しているAPIのGem
-gem 'payjp'
+gem 'payjp'   # 備忘メモ_PAY.JPが提供しているAPIのGem
 gem 'aws-sdk-s3', require: false
+
+group :production do
+  gem 'pg'    # 備忘メモ_PostgreSQLを使用するためのGem
+end
