@@ -55,8 +55,8 @@ test:
 production:
   <<: *default
 # 学習中メモ postgresqlでデプロイするためMysql使用時の設定をコメントアウト
-  # database: furima_32879_production
-  # username: furima_32879
-  # password: <%= ENV['FURIMA_32879_DATABASE_PASSWORD'] %>
+  database: furima_32879_production
+  username: furima_32879
+  password: <%= ENV['FURIMA_32879_DATABASE_PASSWORD'] %>
   adapter: postgresql
   url: <%= ENV['DATABASE_URL'] %>
